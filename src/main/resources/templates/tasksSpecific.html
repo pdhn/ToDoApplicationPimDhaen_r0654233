@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>ViewTask</title>
+</head>
+<body>
+
+    <th:block th:if="${task}">
+        <h1>Task Detail</h1>
+        <p>Title: <span th:text="${task.title}"></span></p>
+        <p>Description: <span th:text="${task.detail}"></span></p>
+        <p>Due date: <span th:text="${task.dateDue}"></span></p>
+    </th:block>
+    <th:block th:if="${task == null}">
+        <h1>Task not found!</h1>
+    </th:block>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Tasks</title>
+</head>
+<body>
+<table>
+    <h1>Tasks</h1>
+
+    <th:block th:if="${tasks}">
+        <tr th:each="task : ${tasks}">
+            <td th:text="|Task | + *{task.taskNumber} + |:|"/>
+            <td th:text="| due | + *{task.month} + | | + *{task.day} + | | + *{task.year} + | at |"/>
+            <td th:text="*{task.hour} + | | + *{task.timeOfDay}"/>
+        </tr>
+    </th:block>
+    <th:block th:if="${tasks.empty or tasks == null}"> <p>No tasks left to do</p></th:block>
+</table>
+</body>
+</html>

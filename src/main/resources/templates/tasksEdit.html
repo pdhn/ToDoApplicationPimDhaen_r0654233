@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Task</title>
+</head>
+<body>
+
+
+<th:block th:if="${task}">
+    <h1>Edit Task for: <span th:text="${task.taskNumber}"></span></h1>
+    <form action="#" th:action="@{/tasks/edit/__${task.taskNumber}__}" method="post">
+        <ul>
+            <li>
+                <label for="title" th:text="|Enter new title:      | + ${task.title}"></label>
+                <input type="text" name="title" id="title">
+            </li>
+
+            <li>
+                <label for="detail" th:text="|Enter new description:  | + ${task.detail}"></label>
+                <input type="text" name="detail" id="detail">
+            </li>
+            <li>
+                <label for="dateDue" th:text="|Enter new due date:        | + ${task.dateDue}"></label>
+                <input type="date" name="dateDue" id="dateDue">
+            </li>
+            <input type="submit">
+        </ul>
+    </form>
+
+
+</th:block>
+<th:block th:if="${task == null}">
+    <h1>Task not found!</h1>
+</th:block>
+
+
+</body>
+</html>
