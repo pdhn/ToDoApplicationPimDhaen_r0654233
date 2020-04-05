@@ -8,11 +8,11 @@
 
 
 <th:block th:if="${task}">
-    <h1>Edit Task for: <span th:text="${task.taskNumber}"></span></h1>
-    <form action="#" th:action="@{/tasks/edit/__${task.taskNumber}__}" method="post">
+    <h1>Edit Task for: <span th:text="${task.uniqueID}"></span></h1>
+    <form action="#" th:action="@{/tasks/edit/__${task.uniqueID}__}" method="post">
         <ul>
 
-            <input type="hidden" th:value="${task.taskNumber}" name="taskNumber" id="taskNumber">
+            <input type="hidden" th:value="${task.uniqueID}" name="uniqueID" id="uniqueID">
 
             <li>
                 <label for="title" th:text="|Enter new title:      | + ${task.title}"></label>
@@ -20,12 +20,12 @@
             </li>
 
             <li>
-                <label for="detail" th:text="|Enter new description:  | + ${task.detail}"></label>
-                <input type="text" name="detail" id="detail">
+                <label for="description" th:text="|Enter new description:  | + ${task.description}"></label>
+                <input type="text" name="description" id="description">
             </li>
             <li>
-                <label for="dateDue" th:text="|Enter new due date:        | + ${task.dateDue}"></label>
-                <input type="date" name="dateDue" id="dateDue">
+                <label for="due" th:text="|Enter new due date:        | + ${task.due}"></label>
+                <input type="date" name="due" id="due">
             </li>
             <input type="submit">
         </ul>

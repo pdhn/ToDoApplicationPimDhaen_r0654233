@@ -7,10 +7,18 @@
 <body>
 
     <th:block th:if="${task}">
-        <h1>Task Detail</h1>
-        <p>Title: <span th:text="${task.title}"></span></p>
-        <p>Description: <span th:text="${task.detail}"></span></p>
-        <p>Due date: <span th:text="${task.dateDue}"></span></p>
+        <h1 th:text="|View task with number: | + ${task.uniqueID}"></h1>
+        <table>
+            <tr>
+                <td th:text="|Title:         | + ${task.title}"/>
+            </tr>
+            <tr>
+                <td th:text="|Description:   | + ${task.description}"/>
+            </tr>
+            <tr>
+                <td th:text="|Due:           | + ${task.dayDue} + |/| + ${task.monthDue} + |/| + ${task.yearDue} + | at | + ${task.hourDue} + ${task.timeOfDayDue}"/>
+            </tr>
+        </table>
     </th:block>
     <th:block th:if="${task == null}">
         <h1>Task not found!</h1>

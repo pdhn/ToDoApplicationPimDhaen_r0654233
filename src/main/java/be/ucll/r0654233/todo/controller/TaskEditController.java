@@ -1,6 +1,6 @@
 package be.ucll.r0654233.todo.controller;
 
-import be.ucll.r0654233.todo.dto.TaskDTO;
+import be.ucll.r0654233.todo.dto.MainTaskDTO;
 import be.ucll.r0654233.todo.service.TaskEditService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,9 +27,8 @@ public class TaskEditController {
     }
 
     @PostMapping
-    public String editForm(@ModelAttribute TaskDTO taskDTO, @PathVariable int id) {
-        taskDTO.setTimeDue(LocalTime.now());
-        taskEditService.updateTask(id, taskDTO);
+    public String editForm(@ModelAttribute MainTaskDTO mainTaskDTO, @PathVariable int id) {
+        taskEditService.updateTask(id, mainTaskDTO);
         return "redirect:/tasks/" + id;
     }
 

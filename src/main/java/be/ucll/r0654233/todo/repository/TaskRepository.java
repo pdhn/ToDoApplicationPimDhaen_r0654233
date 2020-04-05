@@ -1,52 +1,88 @@
 package be.ucll.r0654233.todo.repository;
 
-import be.ucll.r0654233.todo.domain.Task;
-import be.ucll.r0654233.todo.dto.TaskDTO;
+import be.ucll.r0654233.todo.domain.MainTask;
+import be.ucll.r0654233.todo.domain.SubTask;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Repository
 public class TaskRepository {
 
-    private List<Task> tasks;
+    private Map<Integer, MainTask> tasks;
+
+    private final static int MAX_ID_VALUE = 1000;
 
     public TaskRepository() {
-        tasks = new ArrayList<>();
-        tasks.add(new Task(1, "friend", "it is a one description", LocalDate.now(), LocalTime.now()));
-        tasks.add(new Task(2, "guy", "it is a two description", LocalDate.now(), LocalTime.now()));
-        tasks.add(new Task(3, "buddy", "it is a three description", LocalDate.now(), LocalTime.now()));
+        tasks = new HashMap<>();
+
+        addMainTask(new MainTask(1, "jeff", "jeffDescription", Calendar.getInstance()));
+        addSubTask(1, new SubTask(11, "jeffsubtask", "jeffsubtaskDescription", Calendar.getInstance()));
+        addSubTask(1, new SubTask(12, "klsubtask", "klsubtaskDescription", Calendar.getInstance()));
+
+        addMainTask(new MainTask(2, "blue", "blueDescription", Calendar.getInstance()));
+        addSubTask(2, new SubTask(21, "bluesubtask", "bluesubtaskDescription", Calendar.getInstance()));
+        addSubTask(2, new SubTask(22, "redsubtask", "redsubtaskDescription", Calendar.getInstance()));
+
+
     }
 
-    public List<Task> getTasks() {
-        return tasks;
+    public List<MainTask> getTasks() {
+        return new ArrayList<>(tasks.values());
     }
 
-    public Task getTask(int id) {
-        if (id < 0)
-            throw new IllegalArgumentException("Invalid id");
-        for (Task t : tasks) {
-            if (t.getTaskNumber() == id) {
-                return t;
-            }
+    public MainTask getMainTask(int uniqueId) {
+        if (uniqueId < 0)
+            throw new RepositoryException("Invalid ID: id can't be negative.");
+        if (!tasks.containsKey(uniqueId))
+            throw new RepositoryException("Invalid ID: id does not exist in database.");
+        return (MainTask) tasks.get(uniqueId);
+    }
+
+    public void addMainTask(MainTask mainTask) {
+        if (tasks.containsKey(mainTask.getUniqueID()))
+            throw new RepositoryException("ID not unique: task with that id already exists.");
+        if (mainTask.getUniqueID() == 0)
+            mainTask.setUniqueID(generateUniqueID());
+        tasks.put(mainTask.getUniqueID(), mainTask);
+    }
+
+    public void updateMainTask(int uniqueId, MainTask mainTask) {
+        tasks.put(uniqueId, mainTask);
+    }
+
+    public void removeMainTask(int uniqueId) {
+        if (uniqueId < 0)
+            throw new RepositoryException("Invalid ID: id can't be negative.");
+        if (!tasks.containsKey(uniqueId))
+            throw new RepositoryException("Invalid ID: id does not exist in database.");
+        tasks.remove(uniqueId);
+    }
+
+    public void addSubTask(int mainTaskId, SubTask subTask) {
+        MainTask mainTask = getMainTask(mainTaskId);
+        mainTask.addSubTask(subTask);
+        tasks.put(mainTaskId, mainTask);
+    }
+
+    public void updateSubTask(int mainTaskId, SubTask newSubTask) {
+        MainTask mainTask = getMainTask(mainTaskId);
+        mainTask.updateSubTask(newSubTask);
+        tasks.put(mainTaskId, mainTask);
+    }
+
+    public void removeSubTask(int mainTaskId, int subTaskId) {
+        MainTask mainTask = getMainTask(mainTaskId);
+        mainTask.removeSubTask(subTaskId);
+        tasks.put(mainTaskId, mainTask);
+    }
+
+    private int generateUniqueID() {
+        while (true){
+            int randomID = new Random().nextInt(MAX_ID_VALUE);
+            if (!tasks.containsKey(randomID))
+                return randomID;
         }
-        throw new IllegalArgumentException("Invalid id: Id not in database");
     }
 
-    public void addTask(Task task) {
-        if (tasks.contains(task))
-            throw new IllegalArgumentException("Duplicate task");
-
-        this.tasks.add(task);
-    }
-
-
-    public void update(int id, TaskDTO taskDTO) {
-        Task newTask = new Task(taskDTO.getTaskNumber(), taskDTO.getTitle(), taskDTO.getDetail(), taskDTO.getDateDue(), taskDTO.getTimeDue());
-
-        tasks.set(tasks.indexOf(getTask(id)), newTask);
-    }
 }

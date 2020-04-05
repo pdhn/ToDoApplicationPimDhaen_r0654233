@@ -1,26 +1,16 @@
-package be.ucll.r0654233.todo.domain;
+package be.ucll.r0654233.todo.dto;
+
+import be.ucll.r0654233.todo.domain.DomainException;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Calendar;
 
-public abstract class Task {
+public class MainTaskDTO {
 
     private int uniqueID;
     private String title, description;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Calendar due;
-
-    public Task(int uniqueID, String title, String description, Calendar due) {
-        setUniqueID(uniqueID);
-        setTitle(title);
-        setDescription(description);
-        setDue(due);
-    }
-
-    public Task(String title, String description, Calendar due) {
-        setUniqueID(0);
-        setTitle(title);
-        setDescription(description);
-        setDue(due);
-    }
 
     public int getUniqueID() {
         return uniqueID;
@@ -87,5 +77,4 @@ public abstract class Task {
     public int getHourDue() {
         return due.get(Calendar.HOUR);
     }
-
 }

@@ -9,13 +9,20 @@
     <h1>Tasks</h1>
 
     <th:block th:if="${tasks}">
-        <tr th:each="task : ${tasks}">
-            <td th:text="|Task | + *{task.taskNumber} + |:|"/>
-            <td th:text="| due | + *{task.month} + | | + *{task.day} + | | + *{task.year} + | at |"/>
-            <td th:text="*{task.hour} + | | + *{task.timeOfDay}"/>
-        </tr>
+        <table>
+            <tr th:each="task, iStat : ${tasks}">
+                <td th:text="|Task | + *{task.uniqueID} + |:|"/>
+                <td th:text="|Due:           | + *{task.dayDue} + |/| + *{task.monthDue} + |/| + *{task.yearDue} + | at | + *{task.hourDue} + *{task.timeOfDayDue}"/>
+                <table>
+                    <tr th:each="subtasker : *{task.subTasks}">
+                        <td th:text="|SubTask | + *{subtasker.uniqueID} + |:|"/>
+                        <td th:text="|Due:           | + *{subtasker.dayDue} + |/| + *{subtasker.monthDue} + |/| + *{subtasker.yearDue} + | at | + *{subtasker.hourDue} + *{subtasker.timeOfDayDue}"/>
+                    </tr>
+                </table>
+            </tr>
+        </table>
     </th:block>
-    <th:block th:if="${tasks.empty or tasks == null}"> <p>No tasks left to do</p></th:block>
+    <th:block th:if="${tasks.empty or tasks == null}"><p>No tasks left to do</p></th:block>
 </table>
 </body>
 </html>

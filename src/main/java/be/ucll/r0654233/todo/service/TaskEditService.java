@@ -1,11 +1,11 @@
 package be.ucll.r0654233.todo.service;
 
-import be.ucll.r0654233.todo.domain.Task;
-import be.ucll.r0654233.todo.dto.TaskDTO;
+import be.ucll.r0654233.todo.domain.MainTask;
+import be.ucll.r0654233.todo.dto.MainTaskDTO;
 
 public interface TaskEditService {
 
-    public Task getTask(int id);
+    public MainTask getTask(int id);
 
-    public void updateTask(int id, TaskDTO taskDTO);
+    public void updateTask(int id, MainTaskDTO mainTaskDTO);
 }
