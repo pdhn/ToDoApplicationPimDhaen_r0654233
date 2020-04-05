@@ -6,10 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-
 @Controller
-@RequestMapping("/tasks/add")
+@RequestMapping("/tasks/new")
 public class TaskAddNewController {
 
     private final TaskNewService taskNewService;

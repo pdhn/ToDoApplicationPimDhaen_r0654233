@@ -2,7 +2,6 @@ package be.ucll.r0654233.todo.repository;
 
 import be.ucll.r0654233.todo.domain.Task;
 import be.ucll.r0654233.todo.dto.TaskDTO;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
@@ -34,7 +33,7 @@ public class TaskRepository {
                 return t;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Invalid id: Id not in database");
     }
 
     public void addTask(Task task) {
@@ -45,9 +44,9 @@ public class TaskRepository {
     }
 
 
-    public void edit(int id, TaskDTO taskDTO) {
-        int index = tasks.indexOf(tasks.get(id));
-        tasks.remove(index);
-        tasks.add(new Task(taskDTO.getTitle(), taskDTO.getDetail(), taskDTO.getDateDue()));
+    public void update(int id, TaskDTO taskDTO) {
+        Task newTask = new Task(taskDTO.getTaskNumber(), taskDTO.getTitle(), taskDTO.getDetail(), taskDTO.getDateDue(), taskDTO.getTimeDue());
+
+        tasks.set(tasks.indexOf(getTask(id)), newTask);
     }
 }

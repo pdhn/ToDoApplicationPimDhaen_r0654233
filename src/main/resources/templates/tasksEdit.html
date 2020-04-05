@@ -11,6 +11,9 @@
     <h1>Edit Task for: <span th:text="${task.taskNumber}"></span></h1>
     <form action="#" th:action="@{/tasks/edit/__${task.taskNumber}__}" method="post">
         <ul>
+
+            <input type="hidden" th:value="${task.taskNumber}" name="taskNumber" id="taskNumber">
+
             <li>
                 <label for="title" th:text="|Enter new title:      | + ${task.title}"></label>
                 <input type="text" name="title" id="title">

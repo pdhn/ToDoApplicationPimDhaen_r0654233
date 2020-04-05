@@ -7,5 +7,5 @@ public interface TaskEditService {
 
     public Task getTask(int id);
 
-    public void editTask(int id, TaskDTO taskDTO);
+    public void updateTask(int id, TaskDTO taskDTO);
 }

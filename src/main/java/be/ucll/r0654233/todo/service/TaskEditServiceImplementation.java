@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class TaskEditServiceImplentation implements TaskEditService {
+public class TaskEditServiceImplementation implements TaskEditService {
 
 
     private final TaskRepository taskRepository;
 
     @Autowired
-    public TaskEditServiceImplentation(TaskRepository taskRepository) {
+    public TaskEditServiceImplementation(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
     }
 
@@ -23,7 +23,7 @@ public class TaskEditServiceImplentation implements TaskEditService {
     }
 
     @Override
-    public void editTask(int id, TaskDTO taskDTO) {
-        taskRepository.edit(id, taskDTO);
+    public void updateTask(int id, TaskDTO taskDTO) {
+        taskRepository.update(id, taskDTO);
     }
 }
