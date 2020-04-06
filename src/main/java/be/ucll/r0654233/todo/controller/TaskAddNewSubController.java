@@ -4,28 +4,31 @@ import be.ucll.r0654233.todo.dto.MainTaskDTO;
 import be.ucll.r0654233.todo.service.TaskNewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/tasks/new")
-public class TaskAddNewController {
+@RequestMapping("/tasks/{id}/sub/create")
+public class TaskAddNewSubController {
 
     private final TaskNewService taskNewService;
 
     @Autowired
-    public TaskAddNewController(TaskNewService taskNewService){
+    public TaskAddNewSubController(TaskNewService taskNewService){
         this.taskNewService = taskNewService;
     }
 
     @GetMapping
-    public String getForm() {
-        return "tasksAdd.html";
+    public String getForm(@PathVariable("id")int id, Model model) {
+        model.addAttribute(id);
+        return "tasksAddSub";
     }
 
     @PostMapping
-    public String addTask(@ModelAttribute MainTaskDTO mainTaskDTO) {
-        taskNewService.addTask(mainTaskDTO);
+    public String addTask(@PathVariable("id")int id, @ModelAttribute MainTaskDTO mainTaskDTO) {
+        taskNewService.addSubTask(id, mainTaskDTO);
         return "redirect:/tasks";
     }
+
 
 }

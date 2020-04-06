@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Task</title>
+</head>
+<body>
+<form action="#" th:action="@{/tasks/__${id}__/sub/create}" method="post">
+    <h1>Add a Sub Task</h1>
+
+    <label for="title">Title:</label>
+    <input type="text" name="title" id="title">
+
+    <label for="description">Description:</label>
+    <input type="text" name="description" id="description">
+
+    <label for="due">Due date:</label>
+    <input type="date" name="due" id="due">
+
+    <input type="submit">
+</form>
+</body>
+</html>
