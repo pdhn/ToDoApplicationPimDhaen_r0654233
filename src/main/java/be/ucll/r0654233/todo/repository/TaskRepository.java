@@ -48,6 +48,8 @@ public class TaskRepository {
     }
 
     public void updateMainTask(int uniqueId, MainTask mainTask) {
+        // retain subtasks:
+        mainTask.getSubTasks().addAll(getMainTask(uniqueId).getSubTasks());
         tasks.put(uniqueId, mainTask);
     }
 
@@ -78,7 +80,7 @@ public class TaskRepository {
     }
 
     private int generateUniqueID() {
-        while (true){
+        while (true) {
             int randomID = new Random().nextInt(MAX_ID_VALUE);
             if (!tasks.containsKey(randomID))
                 return randomID;

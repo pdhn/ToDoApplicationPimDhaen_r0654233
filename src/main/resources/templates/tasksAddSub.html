@@ -9,18 +9,22 @@
     <div th:insert="header"/>
 </header>
 <form action="#" th:action="@{/tasks/__${id}__/sub/create}" method="post">
-    <h1>Add a Sub Task</h1>
-
-    <label for="title">Title:</label>
-    <input type="text" name="title" id="title">
-
-    <label for="description">Description:</label>
-    <input type="text" name="description" id="description">
-
-    <label for="due">Due date:</label>
-    <input type="date" name="due" id="due">
-
-    <input type="submit">
+    <ul>
+        <h1 th:text="|Add a sub task for: | + ${id}"></h1>
+        <li>
+            <label for="title">Title:</label>
+            <input type="text" name="title" id="title">
+        </li>
+        <li>
+            <label for="description">Description:</label>
+            <input type="text" name="description" id="description">
+        </li>
+        <li>
+            <label for="due">Due date:</label>
+            <input type="date" name="due" id="due">
+        </li>
+        <input type="submit">
+    </ul>
 </form>
 </body>
 </html>

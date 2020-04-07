@@ -25,7 +25,7 @@
                 <input type="text" name="description" id="description">
             </li>
             <li>
-                <label for="due" th:text="|Enter new due date:        | + ${task.due}"></label>
+                <label for="due" th:text="|Enter new due date:        | + ${task.dayDue} + |/| + ${task.monthDue} + |/| + ${task.yearDue} + | at | + ${task.hourDue} + ${task.timeOfDayDue}"></label>
                 <input type="date" name="due" id="due">
             </li>
             <input type="submit">
