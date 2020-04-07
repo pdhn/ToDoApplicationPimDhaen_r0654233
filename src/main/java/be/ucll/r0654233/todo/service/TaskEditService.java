@@ -5,7 +5,7 @@ import be.ucll.r0654233.todo.dto.TaskDTO;
 
 public interface TaskEditService {
 
-    public MainTask getTask(int id);
+    public MainTask getMainTask(int id);
 
     public void updateTask(int id, TaskDTO taskDTO);
 }

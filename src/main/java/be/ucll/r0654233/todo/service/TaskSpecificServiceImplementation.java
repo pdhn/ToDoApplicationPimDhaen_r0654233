@@ -15,9 +15,8 @@ public class TaskSpecificServiceImplementation implements TaskSpecificService {
         this.taskRepository = taskRepository;
     }
 
-
     @Override
-    public MainTask getTask(int mainTaskId) {
-        return taskRepository.getMainTask(mainTaskId);
+    public MainTask getMainTask(int mainTaskId) {
+        return taskRepository.getOne(mainTaskId);
     }
 }

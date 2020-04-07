@@ -4,5 +4,5 @@ import be.ucll.r0654233.todo.domain.MainTask;
 
 public interface TaskSpecificService {
 
-    public MainTask getTask(int mainTaskId);
+    public MainTask getMainTask(int mainTaskId);
 }

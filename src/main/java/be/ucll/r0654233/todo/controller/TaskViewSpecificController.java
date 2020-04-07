@@ -22,8 +22,8 @@ public class TaskViewSpecificController {
     }
 
     @PostMapping
-    public String getTask(@PathVariable("id") int id, Model model) {
-        model.addAttribute("task", taskSpecificService.getTask(id));
+    public String viewSpecificTask(@PathVariable("id") int id, Model model) {
+        model.addAttribute("task", taskSpecificService.getMainTask(id));
         return "tasksSpecific";
     }
 

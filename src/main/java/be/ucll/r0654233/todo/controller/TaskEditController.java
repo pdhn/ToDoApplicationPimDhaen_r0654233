@@ -20,7 +20,7 @@ public class TaskEditController {
 
     @GetMapping
     public String getForm(@PathVariable int id, Model model) {
-        model.addAttribute("task", taskEditService.getTask(id));
+        model.addAttribute("task", taskEditService.getMainTask(id));
         return "tasksEdit";
     }
 

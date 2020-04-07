@@ -1,12 +1,27 @@
 package be.ucll.r0654233.todo.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.Calendar;
 
+@Entity
 public abstract class Task {
 
+    @Id
+    @GeneratedValue
     private int uniqueID;
+
+    @NotEmpty
+    @Size(min = 3)
     private String title, description;
     private Calendar due;
+
+    public Task() {
+
+    }
 
     public Task(int uniqueID, String title, String description, Calendar due) {
         setUniqueID(uniqueID);

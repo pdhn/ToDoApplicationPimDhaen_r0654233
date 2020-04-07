@@ -18,12 +18,16 @@ public class TaskEditServiceImplementation implements TaskEditService {
     }
 
     @Override
-    public MainTask getTask(int id) {
-        return taskRepository.getMainTask(id);
+    public MainTask getMainTask(int id) {
+        return (MainTask) taskRepository.getOne(id);
     }
 
     @Override
     public void updateTask(int id, TaskDTO taskDTO) {
-        taskRepository.updateMainTask(id, new MainTask(id, taskDTO.getTitle(), taskDTO.getDescription(), taskDTO.getDue()));
+        MainTask mainTask = taskRepository.getOne(id);
+        mainTask.setTitle(taskDTO.getTitle());
+        mainTask.setDescription(taskDTO.getDescription());
+        mainTask.setDue(taskDTO.getDue());
+        taskRepository.save(mainTask);
     }
 }

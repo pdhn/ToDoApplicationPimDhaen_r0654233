@@ -19,7 +19,7 @@ public class TaskServiceImplementation implements TaskService {
 
     @Override
     public List<MainTask> getTasks() {
-        return taskRepository.getTasks();
+        return taskRepository.findAll();
     }
 
 }
