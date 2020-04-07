@@ -5,8 +5,9 @@
     <title>Edit Task</title>
 </head>
 <body>
-
-
+<header>
+    <div th:insert="header"/>
+</header>
 <th:block th:if="${task}">
     <h1>Edit Task for: <span th:text="${task.uniqueID}"></span></h1>
     <form action="#" th:action="@{/tasks/edit/__${task.uniqueID}__}" method="post">

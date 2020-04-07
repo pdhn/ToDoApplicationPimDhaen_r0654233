@@ -1,6 +1,6 @@
 package be.ucll.r0654233.todo.controller;
 
-import be.ucll.r0654233.todo.dto.MainTaskDTO;
+import be.ucll.r0654233.todo.dto.TaskDTO;
 import be.ucll.r0654233.todo.service.TaskNewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,8 +23,8 @@ public class TaskAddNewController {
     }
 
     @PostMapping
-    public String addTask(@ModelAttribute MainTaskDTO mainTaskDTO) {
-        taskNewService.addTask(mainTaskDTO);
+    public String addTask(@ModelAttribute TaskDTO taskDTO) {
+        taskNewService.addTask(taskDTO);
         return "redirect:/tasks";
     }
 

@@ -1,7 +1,7 @@
 package be.ucll.r0654233.todo.service;
 
 import be.ucll.r0654233.todo.domain.MainTask;
-import be.ucll.r0654233.todo.dto.MainTaskDTO;
+import be.ucll.r0654233.todo.dto.TaskDTO;
 import be.ucll.r0654233.todo.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +23,7 @@ public class TaskEditServiceImplementation implements TaskEditService {
     }
 
     @Override
-    public void updateTask(int id, MainTaskDTO mainTaskDTO) {
-        taskRepository.updateMainTask(id, new MainTask(id, mainTaskDTO.getTitle(), mainTaskDTO.getDescription(), mainTaskDTO.getDue()));
+    public void updateTask(int id, TaskDTO taskDTO) {
+        taskRepository.updateMainTask(id, new MainTask(id, taskDTO.getTitle(), taskDTO.getDescription(), taskDTO.getDue()));
     }
 }

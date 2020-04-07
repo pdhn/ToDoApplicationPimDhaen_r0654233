@@ -5,7 +5,9 @@
     <title>ViewTask</title>
 </head>
 <body>
-
+<header>
+    <div th:insert="header"/>
+</header>
     <th:block th:if="${task}">
         <h1 th:text="|View task with number: | + ${task.uniqueID}"></h1>
         <table>

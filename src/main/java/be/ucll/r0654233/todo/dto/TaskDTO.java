@@ -5,7 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Calendar;
 
-public class MainTaskDTO {
+public class TaskDTO {
 
     private int uniqueID;
     private String title, description;
