@@ -18,7 +18,7 @@ public class MainTask extends Task {
     private List<SubTask> subTasks;
 
     public MainTask() {
-
+        this.subTasks = new ArrayList<>();
     }
 
     public MainTask(int uniqueId, String title, String description, Calendar due) {

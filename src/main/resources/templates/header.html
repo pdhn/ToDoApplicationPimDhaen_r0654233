@@ -7,15 +7,20 @@
 <body>
 <div th:fragment="header">
     <nav>
-        <ul>
-            <li th:classappend="${module == 'tasksAdd' ? 'active' : ''}">
-                <a href="#" th:href="@{/tasks/new}">Add New Task</a>
-            </li>
-            <li th:classappend="${module == 'tasks' ? 'active' : ''}">
-                <a href="#" th:href="@{/tasks}">View All Tasks</a>
-            </li>
-        </ul>
+        <p>
+            <a id="eng" href="#" th:href="@{/tasks?lang=en}" th:text="#{changeLanguageEN}"></a>
+        </p>
+        <p>
+            <a id="nl" href="#" th:href="@{/tasks?lang=nl}" th:text="#{changeLanguageNL}"></a>
+        </p>
+        <p th:classappend="${module == 'tasksAdd' ? 'active' : ''}">
+            <a href="#" th:href="@{/tasks/new}" th:text="#{addNewTask}"></a>
+        </p>
+        <p th:classappend="${module == 'tasks' ? 'active' : ''}">
+            <a href="#" th:href="@{/tasks}" th:text="#{viewAllTasks}"></a>
+        </p>
     </nav>
+    <link th:href="@{../css/app.css}" rel="stylesheet"/>
 </div>
 </body>
 </html>

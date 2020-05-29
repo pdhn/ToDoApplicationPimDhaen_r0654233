@@ -9,26 +9,26 @@
     <div th:insert="header"/>
 </header>
 <form action="/tasks/new" method="post">
-    <ul>
-        <h1>New Task</h1>
 
-        <li>
-            <label for="title">Title:</label>
-            <input type="text" name="title" id="title">
-        </li>
+    <h1 th:text="#{newTask}"></h1>
 
-        <li>
-            <label for="description">Description:</label>
-            <input type="text" name="description" id="description">
-        </li>
-
-        <li>
-            <label for="due">Due date:</label>
-            <input type="date" name="due" id="due">
-        </li>
-
+    <div>
+        <label for="title" th:text="#{titleT}"></label>
+        <input type="text" name="title" id="title">
+    </div>
+    <div>
+        <label for="description" th:text="#{des}"></label>
+        <input type="text" name="description" id="description">
+    </div>
+    <div>
+        <label for="due" th:text="#{due}"></label>
+        <input type="date" name="due" id="due">
+    </div>
+    <div>
         <input type="submit">
-    </ul>
+    </div>
+
+
 </form>
 </body>
 </html>

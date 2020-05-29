@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Task</title>
+    <title th:text="#{editTask}"></title>
 </head>
 <body>
 <header>
@@ -16,16 +16,16 @@
             <input type="hidden" th:value="${task.uniqueID}" name="uniqueID" id="uniqueID">
 
             <li>
-                <label for="title" th:text="|Enter new title:      | + ${task.title}"></label>
+                <label for="title" th:text="|#{enterNewTitle}     | + ${task.title}"></label>
                 <input type="text" name="title" id="title">
             </li>
 
             <li>
-                <label for="description" th:text="|Enter new description:  | + ${task.description}"></label>
+                <label for="description" th:text="|#{enterNewDescription} | + ${task.description}"></label>
                 <input type="text" name="description" id="description">
             </li>
             <li>
-                <label for="due" th:text="|Enter new due date:        | + ${task.dayDue} + |/| + ${task.monthDue} + |/| + ${task.yearDue} + | at | + ${task.hourDue} + ${task.timeOfDayDue}"></label>
+                <label for="due" th:text="|#{enterNewDue}       | + ${task.dayDue} + |/| + ${task.monthDue} + |/| + ${task.yearDue} + | at | + ${task.hourDue} + ${task.timeOfDayDue}"></label>
                 <input type="date" name="due" id="due">
             </li>
             <input type="submit">
@@ -35,7 +35,7 @@
 
 </th:block>
 <th:block th:if="${task == null}">
-    <h1>Task not found!</h1>
+    <h1 th:text="#{taskNotFound}"></h1>
 </th:block>
 
 

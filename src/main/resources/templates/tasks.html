@@ -2,14 +2,15 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Tasks</title>
+    <title th:text="#{tasksTitle}"></title>
+
 </head>
 <body>
 <header>
     <div th:insert="header"/>
 </header>
 <table>
-    <h1>Tasks</h1>
+    <h1 th:text="#{tasksTitle}"></h1>
 
     <th:block th:if="${tasks}">
         <table>
@@ -25,7 +26,7 @@
             </tr>
         </table>
     </th:block>
-    <th:block th:if="${tasks.empty or tasks == null}"><p>No tasks left to do</p></th:block>
+    <th:block th:if="${tasks.empty or tasks == null}"><p th:text="#{noTasks}"></p></th:block>
 </table>
 </body>
 </html>

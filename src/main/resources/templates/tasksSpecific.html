@@ -2,28 +2,28 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>ViewTask</title>
+    <title th:text="#{viewTask}"></title>
 </head>
 <body>
 <header>
     <div th:insert="header"/>
 </header>
     <th:block th:if="${task}">
-        <h1 th:text="|View task with number: | + ${task.uniqueID}"></h1>
+        <h1 th:text="|#{taskWNum} | + ${task.uniqueID}"></h1>
         <table>
             <tr>
-                <td th:text="|Title:         | + ${task.title}"/>
+                <td th:text="|#{titleT}        | + ${task.title}"/>
             </tr>
             <tr>
-                <td th:text="|Description:   | + ${task.description}"/>
+                <td th:text="|#{des}   | + ${task.description}"/>
             </tr>
             <tr>
-                <td th:text="|Due:           | + ${task.dayDue} + |/| + ${task.monthDue} + |/| + ${task.yearDue} + | at | + ${task.hourDue} + ${task.timeOfDayDue}"/>
+                <td th:text="|#{due}           | + ${task.dayDue} + |/| + ${task.monthDue} + |/| + ${task.yearDue} + | at | + ${task.hourDue} + ${task.timeOfDayDue}"/>
             </tr>
         </table>
     </th:block>
     <th:block th:if="${task == null}">
-        <h1>Task not found!</h1>
+        <h1 th:text="#{taskNotFound}"></h1>
     </th:block>
 
 </body>

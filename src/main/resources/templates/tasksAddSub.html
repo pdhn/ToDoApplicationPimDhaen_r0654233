@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Add Task</title>
+    <title th:text="#{addNewTask}"></title>
 </head>
 <body>
 <header>
@@ -10,17 +10,17 @@
 </header>
 <form action="#" th:action="@{/tasks/__${id}__/sub/create}" method="post">
     <ul>
-        <h1 th:text="|Add a sub task for: | + ${id}"></h1>
+        <h1 th:text="|#{addSub} | + ${id}"></h1>
         <li>
-            <label for="title">Title:</label>
+            <label for="title" th:text="#{titleT}"></label>
             <input type="text" name="title" id="title">
         </li>
         <li>
-            <label for="description">Description:</label>
+            <label for="description" th:text="#{des}"></label>
             <input type="text" name="description" id="description">
         </li>
         <li>
-            <label for="due">Due date:</label>
+            <label for="due" th:text="#{due}"></label>
             <input type="date" name="due" id="due">
         </li>
         <input type="submit">
